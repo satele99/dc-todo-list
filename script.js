@@ -12,34 +12,28 @@ function addTask() {
     let newInput = document.createElement('input');
     let removeButton = document.createElement('button');
     let completedTask = document.getElementById("completed-tasks")
-    newTask.id = 'div' + a;
-    
-    pendingTask.append(newTask);
-    newTask.append(newInput);
-    newTask.append(task);
-    newTask.append(removeButton); 
+    newTask.id = 'div' + a; 
 
-    // pendingTask.appendChild(newTask);
-    // newTask.appendChild(newInput);
-    // newTask.appendChild(task);
-    // newTask.appendChild(removeButton);
-
-    newTask.className = "tasks";
-    newInput.type = 'checkbox';
-    newInput.className = 'tasks-input';
-    removeButton.innerText = 'Remove'; 
-    removeButton.className = 'tasks-button'; 
-
-    // removeButton.id = a;
+    if(task == ""){
+        alert('You did not enter a task in the input field. Please enter a task.')
+    }else{
+        pendingTask.append(newTask);
+        newTask.append(newInput);
+        newTask.append(task);
+        newTask.append(removeButton);
+        newTask.className = "tasks";
+        newInput.type = 'checkbox';
+        newInput.className = 'tasks-input';
+        removeButton.innerText = 'Remove'; 
+        removeButton.className = 'tasks-button'; 
+    }
 
     removeButton.addEventListener('click', event => {
         newTask.remove();
         // document.getElementById(event.target.id).remove();
     }) 
 
-
     newInput.addEventListener('change', stage => {
-        
         newTask.id = 'div' + a;
 
         completedTask.append(newTask);
@@ -52,23 +46,24 @@ function addTask() {
         newInput.className = 'tasks-input';
         removeButton.innerText = 'Remove'; 
         removeButton.className = 'tasks-button'; 
-
-        // removeButton.addEventListener('click', function(){
-        //     newTask.remove();
-        // })
-       
-
-
-
+        if(newInput.checked){
+            return
+        }else{
+            pendingTask.append(newTask);
+            newTask.append(newInput);
+            // newTask.append(task);
+            newTask.append(removeButton);
+            newTask.className = "tasks";
+            newInput.type = 'checkbox';
+            newInput.className = 'tasks-input';
+            removeButton.innerText = 'Remove'; 
+            removeButton.className = 'tasks-button'; 
+        };
     })
-
-
+    
+    document.getElementById("assignment").value = "";
     a +=1;
-    
-
-    
-    
-
+  
 }
 
 
